@@ -4,12 +4,22 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const index 	= require('./routes/index');
 const posts 	= require('./routes/posts');
 const reviews = require('./routes/reviews');
 
 const app = express();
+
+mongoose.connect('mongodb://localhost/surf-shop');
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  // we're connected!
+  console.log('Connected to database!');
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

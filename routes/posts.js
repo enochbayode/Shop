@@ -3,12 +3,12 @@ const router = express.Router();
 
 /* GET posts index /posts */
 router.get('/', (req, res, next) => {
-  res.send('/posts');
+  res.send('INDEX /posts');
 });
 
 /* GET posts new /posts/new */
 router.get('/new', (req, res, next) => {
-  res.send('/posts/new');
+  res.send('NEW /posts/new');
 });
 
 /* POST posts create /posts */
